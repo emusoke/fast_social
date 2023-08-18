@@ -1,0 +1,16 @@
+1) Get a dummy authenticate endpoint working. 
+2) Create a get_user function that uses a fake sanity check
+3) Replace the sanity check with a token that we get from either keycloak
+or okta
+
+
+Not using this flow anymore. The danger with this pattern is that it 
+sends the auth token to the client. We would like to keep the token on the 
+server side so that it is not exposed. 
+
+Instead we will have a redirect that goes to our IAM provider. 
+
+We will do an example for Keycloak and another for auth0. 
+
+
+Ok lets get started. 
