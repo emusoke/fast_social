@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends, Header
 from fastapi.security import HTTPBearer
 from typing import Annotated, Any
+from routers import users, posts
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
@@ -36,6 +37,8 @@ oauth.register(
         "scope": "openid profile email"},
         )
 
+app.include_router(users.router)
+app.include_router(posts.router)
 
 @app.get("/")
 def home(request: Request):
